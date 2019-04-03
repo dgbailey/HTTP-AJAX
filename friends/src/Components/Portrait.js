@@ -17,12 +17,14 @@ class Portrait extends Component{
         this.setState({data:this.props.portraitData})
     }
 
-    // componentWillUpdate(prevState){
-    //     if(this.state !== prevState){
-    //         this.setState({data:this.state})
-    //     }
+    componentWillUpdate(newProps){
+        if(this.props.portraitData !== newProps.portraitData){
+           this.setState({
+               data:newProps.portraitData
+           })
+        }   
 
-    // }
+    }
     render(){
         console.log('portrait rendering')
         return(
