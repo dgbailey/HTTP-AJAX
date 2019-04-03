@@ -4,6 +4,41 @@ import axios from 'axios';
 import Portrait from './Portrait';
 import styled, { css } from 'styled-components';
 
+
+const SCompendium = styled.section`
+    padding:5px;
+    display:flex;
+   
+    align-items:center;
+    justify-content:space-around;
+   
+`
+
+
+const SFriendListCont = styled.div`
+    width:200px;
+    height:300px;
+    overflow:scroll;
+    display:flex;
+    flex-direction:column;
+    margin-bottom:20px;
+
+   
+    h4{
+        padding: 10px;
+
+        border-radius: 5px;
+        
+        background: #b0e6ba;
+        
+        margin: 20px 0px 0px;
+        
+        color: green;
+    }
+
+`
+
+
 class FriendList extends Component {
     constructor(){
         super();
@@ -37,8 +72,11 @@ class FriendList extends Component {
             )
         }
         return (
-            <section className='friend-compendium'>
-                <div className = 'friend-list-cont'>
+            <SCompendium>
+                
+                
+                <SFriendListCont>
+                    <h4>Active</h4>
                     {this.state.friendData.map(
                         friendDataValue => 
                         <Friend 
@@ -49,12 +87,12 @@ class FriendList extends Component {
                         setPortrait={this.setPortrait}/>)
                     }
                 
-                </div>
+                </SFriendListCont>
                 <div className='portrait-cont'>
-                    <h1>Portrait</h1>
+                    
                     <Portrait portraitData={this.state.portraitData}/>
                 </div>
-            </section>
+            </SCompendium>
         )
     }
 }
