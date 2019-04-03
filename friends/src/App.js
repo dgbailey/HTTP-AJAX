@@ -22,24 +22,28 @@ const SNav = styled.nav`
   align-items:center;
   justify-content:space-between;
   padding:15px;
-  
+  color:white;
 
   h1{
     width:auto;
     z-index:2;
   }
   .nav-links{
+    color:white;
     z-index:2;
   }
   a{
     margin:5px;
     padding:10px;
+    color:white;
+    text-decoration:none;
+    font-weight: 800;
     
   }
 
   .playdiv{
     position: absolute;
-    background: peachpuff;
+    background: #460065;
     width: 100%;
     top: 0;
     height: 100px;

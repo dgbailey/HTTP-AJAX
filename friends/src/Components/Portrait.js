@@ -3,7 +3,7 @@ import { throws } from 'assert';
 import styled, { css } from 'styled-components';
 
 const SPortrait = styled.div`
-    height: 100%;
+    height: 300px;
 
     width: 300px;
     display:flex;
@@ -11,7 +11,9 @@ const SPortrait = styled.div`
     justify-content:center;
     text-align:center;
 
-    
+    border: 1px dashed lightgray;
+    border-radius: 5px;
+    background:#add8e612;
 
 
 `
