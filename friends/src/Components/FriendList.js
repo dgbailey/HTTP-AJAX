@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Friend from './Friend';
 import axios from 'axios';
 import Portrait from './Portrait';
-
+import styled, { css } from 'styled-components';
 
 class FriendList extends Component {
     constructor(){
