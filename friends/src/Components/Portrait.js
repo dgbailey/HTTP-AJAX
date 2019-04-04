@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 const SPortrait = styled.div`
     height: 300px;
 
-    width: 300px;
+    margin:10px;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -15,6 +15,13 @@ const SPortrait = styled.div`
     border-radius: 5px;
     background:#add8e612;
 
+    .vanity{
+        padding: 15px;
+        background: #a5a5a4;
+        border-radius: 50%;
+
+        
+    }
 
 `
 

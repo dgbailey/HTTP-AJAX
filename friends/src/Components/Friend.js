@@ -6,6 +6,7 @@ const SFriend = styled.div`
     display:flex;
     align-items: center;
     border-radius:5px;
+    
     &:hover{
         cursor:pointer;
         background:#2a165f9e;
@@ -13,6 +14,7 @@ const SFriend = styled.div`
 
     h3{
         margin-left: 10px;
+        font-weight: 600;
 
     }
 
@@ -39,7 +41,7 @@ const SFriend = styled.div`
     }
 
     .styled-cont{
-        height:34px;
+        height:25px;
         display:flex;
         align-items:center;
         

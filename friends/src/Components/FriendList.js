@@ -16,15 +16,15 @@ const SCompendium = styled.section`
 
 
 const SFriendListCont = styled.div`
-    width:175px;
-    height:300px;
+    width:100%
+    height:200px;
     overflow:scroll;
     display:flex;
     flex-direction:column;
     margin-bottom:20px;
     z-index:2;
     font-size:12px;
-    color:white;
+    color:lightgray;
    
     h4{
         
@@ -43,21 +43,27 @@ const AddForm = styled.form`
     border:none;
     
     z-index:2;
-    margin-bottom:10px;
-    width:175px;
+    
    
+   .section-title{
+      margin:0px;
+    font-weight:500;
+    color:lightgray;   
+    
+    }
 
 
     input{
         border:none;
         background:#170054;
         border-radius:5px;
-        width:100%;
+        
         height:30px;
         color:white;
         font-weight:800;
         text-align:left;
-        
+        margin-bottom:10px;
+        padding-left: 10px;
     }
 
 
@@ -69,8 +75,8 @@ class FriendList extends Component {
         super();
         this.state = {
             friendData :[],
-            portraitData:{name:'no friend',
-            age:'select friend',email:'select user'}
+            // portraitData:{name:'no friend',
+            // age:'select friend',email:'select user'}
         }
 
     }
@@ -83,11 +89,7 @@ class FriendList extends Component {
         .catch(err => {console.log(err)})
     }
 
-    setPortrait = (friendPropsObject) => {
-        console.log('setportrait firing')
-        this.setState({portraitData:friendPropsObject})
-
-    }
+    
 
     render(){
         console.log('friends list rendering')
@@ -100,7 +102,9 @@ class FriendList extends Component {
             <SCompendium>
                 
                 <AddForm>
-                    <input placeholder='add friend'></input>
+                    
+                    <input placeholder='search friend'></input>
+                    <h4 className='section-title'>Friends</h4>
                 </AddForm>
                 <SFriendListCont>
                     
@@ -108,10 +112,10 @@ class FriendList extends Component {
                         friendDataValue => 
                         <Friend 
                         key={friendDataValue.id} 
-                        age={friendDataValue.age} 
+                        // age={friendDataValue.age} 
                         name={friendDataValue.name} 
                         email={friendDataValue.email}
-                        setPortrait={this.setPortrait}/>)
+                        setPortrait={this.props.setPortrait}/>)
                     }
                 
                 </SFriendListCont>

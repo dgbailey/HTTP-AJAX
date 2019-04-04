@@ -4,13 +4,15 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import FriendList from './Components/FriendList';
 import styled, { css } from 'styled-components';
+import Portrait from './Components/Portrait';
 
 const SApp = styled.div`
   height:auto;
   margin:30px auto;
-  width:900px;
+  width:600px;
   box-shadow: 0 13px 27px -5px rgba(50,50,93,.25),0 8px 16px -8px rgba(0,0,0,.3),0 -6px 16px -6px rgba(0,0,0,.025);
   border-radius: 10px;
+
   
   overflow:hidden;
   position:relative;
@@ -34,23 +36,40 @@ const SNav = styled.nav`
   flex-direction:row;
   align-items:center;
   justify-content:space-between;
-  padding:15px;
+  padding: 5px 5px 20px;
   color:white;
   height:30px;
   width:100px;
+  
+  .page-header{
+    font-family: 'Roboto', sans-serif;
+    font-size:37px;
+  }
   
 
   h1{
     width:auto;
     z-index:2;
+    
   }
   .nav-links{
+    margin-left: 16px;
     color:white;
     z-index:2;
+    display:flex;
+    justify-content:space-around;
+    a:hover{
+      color:purple;
+      
+    }
+    a{
+      color:lightgray;
+    }
+    
   }
   a{
     margin:5px;
-    padding:10px;
+    
     color:white;
     text-decoration:none;
     font-weight: 800;
@@ -66,19 +85,42 @@ const BGdiv = styled.div`
   
 `
 const BigVanity = styled.div`
-  width:600px;
+  width:100%;
   height:100%;
 
 `
 
 const Sidebar = styled.section`
   width:200px;
-  
+  padding:5px;
 
   position: relative;
 `
+const VanityNav = styled.div`
+  height: 50px;
+  
+  width:100%;
+  border-bottom:1px solid lightgray;
+
+`
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      friendData :[],
+      portraitData:{name:'no friend selected',
+      }
+  }
+
+  }
+  setPortrait = (friendPropsObject) => {
+    console.log('setportrait firing')
+    this.setState({portraitData:friendPropsObject})
+
+  }
+
+  
   render() {
     return (
       <SApp>
@@ -86,17 +128,18 @@ class App extends Component {
         <div className='playdiv'></div>
           <SNav>
             
-              <h1 className="page-header">friends</h1>
+              <h1 className="page-header">ajax</h1>
               
               <div className="nav-links">
-                <Link to="/">Home</Link>
-                <Link to="/friend-list">my friends</Link>
+                <Link to="/"><i class="fas fa-home"></i></Link>
+                <Link to="/friend-list"><i class="fas fa-user-friends"></i></Link>
               </div>
           </SNav>
-          <Route path='/friend-list' component={FriendList}></Route>
+          <Route path='/friend-list' render={(props) => <FriendList {...props} setPortrait={this.setPortrait} />}></Route>
         </Sidebar>
         <BigVanity>
-          
+          <VanityNav></VanityNav>
+          <Portrait portraitData={this.state.portraitData}/>
         </BigVanity>
       </SApp>
     );
