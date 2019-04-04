@@ -11,7 +11,7 @@ const SCompendium = styled.section`
    flex-direction:column;
     align-items:center;
     justify-content:space-around;
-   
+    font-family: 'Lato', sans-serif;
 `
 
 
@@ -23,8 +23,9 @@ const SFriendListCont = styled.div`
     flex-direction:column;
     margin-bottom:20px;
     z-index:2;
-    font-size:12px;
-    color:lightgray;
+    font-size:13px;
+    font-weight:600;
+    color:#adaaaa;
    
     h4{
         
@@ -36,6 +37,7 @@ const SFriendListCont = styled.div`
         margin: 20px 0px 0px;
         
         color: green;
+        
     }
 
 `
@@ -54,16 +56,23 @@ const AddForm = styled.form`
 
 
     input{
-        border:none;
-        background:#170054;
-        border-radius:5px;
+        background: #120044;
+
+        border-radius: 5px;
         
-        height:30px;
-        color:white;
-        font-weight:800;
-        text-align:left;
-        margin-bottom:10px;
+        height: 30px;
+        
+        color: white;
+        
+        font-weight: 600;
+        
+        text-align: left;
+        
+        margin-bottom: 10px;
+        
         padding-left: 10px;
+        
+        border: 1px solid #270042;
 
         
     }
@@ -81,6 +90,7 @@ const AddForm = styled.form`
             color:lightgray;
             opacity:.75;
             font-size:15px;
+            padding:0px;
 
             &:hover{
                 cursor:pointer;
@@ -126,7 +136,7 @@ class FriendList extends Component {
                 
                 <AddForm>
                     
-                    <input placeholder='search friend'></input>
+                    <input placeholder='search friend...'></input>
                         <section className='category friends'>
                             <h4 className='section-title'>Friends</h4>
                             <span className='addBtn'>

@@ -10,11 +10,12 @@ const SFriend = styled.div`
     &:hover{
         cursor:pointer;
         background:#2a165f9e;
+        color:white;
     }
 
     h3{
-        margin-left: 10px;
-        font-weight: 600;
+        margin-left: 13px;
+        font-weight: 500;
 
     }
 

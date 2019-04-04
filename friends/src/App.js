@@ -18,6 +18,10 @@ const SApp = styled.div`
   position:relative;
   display:flex;
   flex-direction:row;
+  -webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
 
   .playdiv{
     position: absolute;
@@ -36,10 +40,10 @@ const SNav = styled.nav`
   flex-direction:row;
   align-items:center;
   justify-content:space-between;
-  padding: 5px 5px 20px;
+  padding: 10px 10px 20px;
   color:white;
   height:30px;
-  width:100px;
+  
   
   .page-header{
     font-family: 'Roboto', sans-serif;
@@ -91,7 +95,7 @@ const BigVanity = styled.div`
 `
 
 const Sidebar = styled.section`
-  width:200px;
+  width:250px;s
   padding:5px;
 
   position: relative;
