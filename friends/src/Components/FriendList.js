@@ -64,8 +64,31 @@ const AddForm = styled.form`
         text-align:left;
         margin-bottom:10px;
         padding-left: 10px;
+
+        
     }
 
+    .category{
+        display:flex;
+        justify-content:space-between;
+    }
+
+    .addBtn{
+        
+        button{
+            border:none;
+            background:none;
+            color:lightgray;
+            opacity:.75;
+            font-size:15px;
+
+            &:hover{
+                cursor:pointer;
+                opacity:1;
+
+            }
+        }
+    }
 
 `
 
@@ -104,7 +127,14 @@ class FriendList extends Component {
                 <AddForm>
                     
                     <input placeholder='search friend'></input>
-                    <h4 className='section-title'>Friends</h4>
+                        <section className='category friends'>
+                            <h4 className='section-title'>Friends</h4>
+                            <span className='addBtn'>
+                                <button>
+                                    <i class="fas fa-plus-circle"></i>
+                                </button>
+                            </span>
+                        </section>
                 </AddForm>
                 <SFriendListCont>
                     
