@@ -20,7 +20,7 @@ const SPortrait = styled.div`
         background: #a5a5a4;
         border-radius: 50%;
 
-        
+        }
     }
 
 `
@@ -31,7 +31,7 @@ class Portrait extends Component{
     constructor(props){
         super(props);
         this.state = {
-            data:this.props.portraitData
+            data:[]
         }
     
     }
@@ -39,6 +39,7 @@ class Portrait extends Component{
     componentDidMount(){
         console.log('portrait')
         this.setState({data:this.props.portraitData})
+        console.log('portrait props', this.state.data)
     }
 
     componentWillUpdate(newProps){

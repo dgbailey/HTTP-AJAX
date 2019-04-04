@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import FriendList from './Components/FriendList';
 import styled, { css } from 'styled-components';
 import Portrait from './Components/Portrait';
+import BigVanity from './Components/BigVanity';
 
 const SApp = styled.div`
   height:auto;
@@ -88,11 +89,7 @@ const BGdiv = styled.div`
   background:red;
   
 `
-const BigVanity = styled.div`
-  width:100%;
-  height:100%;
 
-`
 
 const Sidebar = styled.section`
   width:250px;s
@@ -141,10 +138,10 @@ class App extends Component {
           </SNav>
           <Route path='/friend-list' render={(props) => <FriendList {...props} setPortrait={this.setPortrait} />}></Route>
         </Sidebar>
-        <BigVanity>
-          <VanityNav></VanityNav>
-          <Portrait portraitData={this.state.portraitData}/>
-        </BigVanity>
+        <Route path='/friend-list' render={(props) => <BigVanity {...props} portraitData={this.state.portraitData}/>}></Route>
+          
+          
+  
       </SApp>
     );
   }
