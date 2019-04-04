@@ -6,6 +6,9 @@ import FriendList from './Components/FriendList';
 import styled, { css } from 'styled-components';
 import Portrait from './Components/Portrait';
 import BigVanity from './Components/BigVanity';
+import Form from './Components/Form';
+
+import axios from 'axios';
 
 const SApp = styled.div`
   height:auto;
@@ -121,9 +124,36 @@ class App extends Component {
 
   }
 
+  addFriend = newFriend => {
+    axios
+      .post('http://localhost:5000/friends', newFriend)
+      .then(res => {
+        this.setState({ friendData: res.data });
+        console.log(res);
+        // redirect
+        // this.props.history.push('/item-list');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  componentWillUpdate(newProps){
+    console.log('new app',newProps)
+    // if(this.state.friendData !== newProps){
+    //    this.setState({
+    //        friendData:newState.friendData
+
+    //    })
+    // }
+
+  }
+
   
   render() {
+    console.log('app rendering')
     return (
+      
       <SApp>
         <Sidebar>
         <div className='playdiv'></div>
@@ -134,12 +164,13 @@ class App extends Component {
               <div className="nav-links">
                 <Link to="/"><i class="fas fa-home"></i></Link>
                 <Link to="/friend-list"><i class="fas fa-user-friends"></i></Link>
+                
               </div>
           </SNav>
-          <Route path='/friend-list' render={(props) => <FriendList {...props} setPortrait={this.setPortrait} />}></Route>
+          <Route path='/friend-list' render={(props) => <FriendList {...props} friendData={this.state.friendData} setPortrait={this.setPortrait} />}></Route>
         </Sidebar>
-        <Route path='/friend-list' render={(props) => <BigVanity {...props} portraitData={this.state.portraitData}/>}></Route>
-          
+        <Route path='/friend-list' render={(props) => <BigVanity {...props}  addFriend={this.addFriend} portraitData={this.state.portraitData}/>}></Route>
+        
           
   
       </SApp>

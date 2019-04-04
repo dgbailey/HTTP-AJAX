@@ -3,6 +3,7 @@ import { throws } from 'assert';
 import styled, { css } from 'styled-components';
 import Portrait from './Portrait';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Form from './Form';
 
 const SBigVanity = styled.div`
   width:100%;
@@ -21,29 +22,43 @@ class BigVanity extends Component {
     constructor(props){
         super(props);
         this.state={
-            data:[]
+            data:[],
+            location:''
         }
     }
 
     componentWillMount(){
+        console.log('big vanity mounted')
         this.setState({data:this.props.portraitData})
     }
 
     componentWillUpdate(newProps){
+        console.log('new',newProps)
+        console.log('old',this.state.data)
+        console.log('update running');
         if(this.state.data !== newProps.portraitData){
            this.setState({
                data:newProps.portraitData
+
            })
-        }   
+        }
 
     }
 
+    // componentWillReceiveProps(nextProps) {
+    //     if (nextProps.location.pathname !== this.props.location.pathname) {
+    //       console.log("here");
+    //       //take action here
+    //     }
+    //   }
+
     render(){
+        console.log('big vanity render')
     return(
         <SBigVanity>
             <VanityNav></VanityNav>
-            <Route path='/friend-list' render={() => <Portrait portraitData={this.state.data} />}></Route>
-            
+            <Route exact path='/friend-list' render={() => <Portrait portraitData={this.state.data} />}></Route>
+            <Route path='/friend-list/friend-form' render={() => <Form {...this.props}/>}></Route> 
         </SBigVanity>
 
     )
