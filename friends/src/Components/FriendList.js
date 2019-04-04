@@ -8,7 +8,7 @@ import styled, { css } from 'styled-components';
 const SCompendium = styled.section`
     padding:5px;
     display:flex;
-   
+   flex-direction:column;
     align-items:center;
     justify-content:space-around;
    
@@ -16,16 +16,18 @@ const SCompendium = styled.section`
 
 
 const SFriendListCont = styled.div`
-    width:200px;
+    width:175px;
     height:300px;
     overflow:scroll;
     display:flex;
     flex-direction:column;
     margin-bottom:20px;
-
+    z-index:2;
+    font-size:12px;
+    color:white;
    
     h4{
-        padding: 10px;
+        
 
         border-radius: 5px;
         
@@ -35,6 +37,29 @@ const SFriendListCont = styled.div`
         
         color: green;
     }
+
+`
+const AddForm = styled.form`
+    border:none;
+    
+    z-index:2;
+    margin-bottom:10px;
+    width:175px;
+   
+
+
+    input{
+        border:none;
+        background:#170054;
+        border-radius:5px;
+        width:100%;
+        height:30px;
+        color:white;
+        font-weight:800;
+        text-align:left;
+        
+    }
+
 
 `
 
@@ -74,9 +99,11 @@ class FriendList extends Component {
         return (
             <SCompendium>
                 
-                
+                <AddForm>
+                    <input placeholder='add friend'></input>
+                </AddForm>
                 <SFriendListCont>
-                    <h4>Active</h4>
+                    
                     {this.state.friendData.map(
                         friendDataValue => 
                         <Friend 
@@ -88,10 +115,10 @@ class FriendList extends Component {
                     }
                 
                 </SFriendListCont>
-                <div className='portrait-cont'>
+                {/* <div className='portrait-cont'>
                     
                     <Portrait portraitData={this.state.portraitData}/>
-                </div>
+                </div> */}
             </SCompendium>
         )
     }

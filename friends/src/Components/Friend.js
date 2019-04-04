@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 
 const SFriend = styled.div`
-    background:#d3d3d340;
-    margin:2px;
+   
     display:flex;
     align-items: center;
-
+    border-radius:5px;
     &:hover{
         cursor:pointer;
-        background:lightgray;
+        background:#2a165f9e;
     }
 
     h3{
@@ -24,9 +23,9 @@ const SFriend = styled.div`
 
         margin-right:10px;
 
-        height: 12px;
+        height: 8px;
         
-        width: 12px;
+        width: 8px;
         
         background: green;
         
@@ -37,6 +36,13 @@ const SFriend = styled.div`
         display: inline-block;
         
         border-radius: 50%;
+    }
+
+    .styled-cont{
+        height:34px;
+        display:flex;
+        align-items:center;
+        
     }
 
 `
