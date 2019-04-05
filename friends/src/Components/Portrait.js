@@ -55,6 +55,10 @@ class Portrait extends Component{
     
     }
 
+    updatePortraitNewUser(user){
+        this.setState({data:user})
+    }
+    
     componentDidMount(){
         console.log('portrait mounting')
         this.setState({data:this.props.portraitData})

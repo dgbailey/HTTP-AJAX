@@ -17,6 +17,50 @@ const SForm = styled.div`
     border-radius: 5px;
     background:#add8e612;
 
+    input{
+        margin: 3px;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid lightgray;
+        font-size: revert;
+        font-size:20px;
+        padding-left:5px;
+    
+    }
+
+    button{
+        border: 1px solid gray;
+
+        background: none;
+
+        padding: 13px 25px;
+
+        border-radius: 5px;
+
+        font-size: 15px;
+
+        margin-top: 10px;
+
+        color: black;
+
+        font-weight: 600;
+
+        &:hover{
+            cursor:pointer;
+            opacity:.9;
+        }
+        &.delete{
+            background:lightgray;
+        }
+    }
+
+`
+const BtnBox = styled.div`
+
+        width:198px;
+        display:flex;
+        justify-content:space-between;
+        margin:0px auto;
 
 
 
@@ -31,8 +75,8 @@ class Form extends React.Component {
         this.state = {
             friend: {
                 name: '',
-                email: '',
-                age:'placeholder'
+                email: ''
+                
             }
 
         }
@@ -61,6 +105,7 @@ class Form extends React.Component {
         }
       });
 
+      this.props.history.push('/friend-list');
 
     };
   
@@ -74,7 +119,7 @@ class Form extends React.Component {
               type="string"
               name="name"
               onChange={this.changeHandler}
-              placeholder="name"
+              placeholder="Name"
               value={this.state.friend.name}
             />
             <div className="baseline" />
@@ -89,8 +134,10 @@ class Form extends React.Component {
             <div className="baseline" />
   
           
-  
-            <button className="md-button form-button">Add Friend</button>
+            <BtnBox>
+                <button className="add">Add</button>
+                <button className="delete">Delete</button>
+            </BtnBox>
           </form>
         </SForm>
       );

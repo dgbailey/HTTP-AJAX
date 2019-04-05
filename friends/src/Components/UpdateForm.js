@@ -48,7 +48,7 @@ class UpdateForm extends React.Component {
           ...prevState.friend,
           [ev.target.name]: value,
           id:this.props.portraitData.id,
-          age:22
+          
         }
       }));
     };
@@ -65,6 +65,7 @@ class UpdateForm extends React.Component {
         }
       });
 
+      this.props.history.push('/friend-list');
 
     };
   

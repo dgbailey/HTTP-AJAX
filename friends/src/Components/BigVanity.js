@@ -32,10 +32,20 @@ class BigVanity extends Component {
         console.log('big vanity mounted')
         this.setState({data:this.props.portraitData})
     }
+    // componentWillReceiveProps(newProps){
+    //     console.log('old',this.props)
+    //     console.log('updated friendlust',newProps)
+    //     if(this.state.data !== newProps.portraitData){
+    //        this.setState({
+    //            friendData:newProps.portraitData
 
+    //        })
+    //     }
+
+    // }
     componentWillUpdate(newProps){
-        console.log('new',newProps)
-        console.log('old',this.state.data)
+        console.log('new bigVanity',newProps)
+        console.log('old bigVanity',this.state.data)
         console.log('update running');
         if(this.state.data !== newProps.portraitData){
            this.setState({

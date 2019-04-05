@@ -128,14 +128,18 @@ class App extends Component {
     axios
       .post('http://localhost:5000/friends', newFriend)
       .then(res => {
-        this.setState({ friendData: res.data });
+        this.setState({ friendData: res.data,
+                        portraitData: newFriend});
         console.log(res);
         // redirect
         // this.props.history.push('/item-list');
-      })
+      })    
       .catch(err => {
         console.log(err);
       });
+
+      
+
   };
 
 
@@ -144,7 +148,8 @@ class App extends Component {
     axios
       .put(`http://localhost:5000/friends/${newFriend.id}`,newFriend)
       .then(res => {
-        this.setState({ friendData: res.data });
+        this.setState({ friendData: res.data ,
+                        portraitData: newFriend});
         console.log('RES',res);
         // redirect
         // this.props.history.push('/item-list');
