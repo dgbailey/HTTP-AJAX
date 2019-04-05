@@ -160,6 +160,7 @@ class FriendList extends Component {
                         friendDataValue => 
                         <Friend 
                         key={friendDataValue.id} 
+                        id={friendDataValue.id}
                         // age={friendDataValue.age} 
                         name={friendDataValue.name} 
                         email={friendDataValue.email}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { throws } from 'assert';
 import styled, { css } from 'styled-components';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const SPortrait = styled.div`
     height: 300px;
@@ -73,7 +74,7 @@ class Portrait extends Component{
         return(
             <SPortrait>
                 <div className='style-box'>
-                    <div className='edit'><i class="far fa-edit"></i></div>
+                    <Link to='/friend-list/update-friend-form'><div className='edit'><i class="far fa-edit"></i></div></Link>
                     <span className='vanity'><i class="fas fa-users"></i></span>
                     <h3>{this.state.data.name}</h3>
                     <span className ='prof-icon'></span>

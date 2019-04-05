@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import Portrait from './Portrait';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Form from './Form';
+import UpdateForm from './UpdateForm';
 
 const SBigVanity = styled.div`
   width:100%;
@@ -58,7 +59,8 @@ class BigVanity extends Component {
         <SBigVanity>
             <VanityNav></VanityNav>
             <Route exact path='/friend-list' render={() => <Portrait portraitData={this.state.data} />}></Route>
-            <Route path='/friend-list/friend-form' render={() => <Form {...this.props}/>}></Route> 
+            <Route exact path='/friend-list/friend-form' render={() => <Form {...this.props}/>}></Route>
+            <Route path='/friend-list/update-friend-form' render={() => <UpdateForm {...this.props}/>}></Route>
         </SBigVanity>
 
     )
