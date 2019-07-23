@@ -3,8 +3,8 @@ import Friend from './Friend';
 import axios from 'axios';
 import Portrait from './Portrait';
 import styled, { css } from 'styled-components';
-
-
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Form from './Form';
 const SCompendium = styled.section`
     padding:5px;
     display:flex;
@@ -84,20 +84,17 @@ const AddForm = styled.form`
 
     .addBtn{
         
-        button{
-            border:none;
-            background:none;
-            color:lightgray;
-            opacity:.75;
-            font-size:15px;
-            padding:0px;
-
-            &:hover{
-                cursor:pointer;
-                opacity:1;
-
-            }
+        a{
+            opacity:.85;
+            color:#d3d3d3ad;
         }
+
+        a:hover{
+            cursor:pointer;
+            opacity:1;
+
+        }
+    
     }
 
 `
@@ -122,6 +119,17 @@ class FriendList extends Component {
         .catch(err => {console.log(err)})
     }
 
+    componentWillReceiveProps(newProps){
+        console.log('old',this.props)
+        console.log('updated friendlust',newProps)
+        if(this.state.friendData !== newProps.friendData){
+           this.setState({
+               friendData:newProps.friendData
+
+           })
+        }
+
+    }
     
 
     render(){
@@ -140,9 +148,9 @@ class FriendList extends Component {
                         <section className='category friends'>
                             <h4 className='section-title'>Friends</h4>
                             <span className='addBtn'>
-                                <button>
-                                    <i class="fas fa-plus-circle"></i>
-                                </button>
+                               
+                                   <Link to='friend-list/friend-form'><i class="fas fa-plus-circle"></i></Link> 
+                                   
                             </span>
                         </section>
                 </AddForm>
@@ -152,6 +160,7 @@ class FriendList extends Component {
                         friendDataValue => 
                         <Friend 
                         key={friendDataValue.id} 
+                        id={friendDataValue.id}
                         // age={friendDataValue.age} 
                         name={friendDataValue.name} 
                         email={friendDataValue.email}

@@ -17,50 +17,6 @@ const SForm = styled.div`
     border-radius: 5px;
     background:#add8e612;
 
-    input{
-        margin: 3px;
-        height: 40px;
-        border-radius: 5px;
-        border: 1px solid lightgray;
-        font-size: revert;
-        font-size:20px;
-        padding-left:5px;
-    
-    }
-
-    button{
-        border: 1px solid gray;
-
-        background: none;
-
-        padding: 13px 25px;
-
-        border-radius: 5px;
-
-        font-size: 15px;
-
-        margin-top: 10px;
-
-        color: black;
-
-        font-weight: 600;
-
-        &:hover{
-            cursor:pointer;
-            opacity:.9;
-        }
-        &.delete{
-            background:lightgray;
-        }
-    }
-
-`
-const BtnBox = styled.div`
-
-        width:198px;
-        display:flex;
-        justify-content:space-between;
-        margin:0px auto;
 
 
 
@@ -68,20 +24,21 @@ const BtnBox = styled.div`
 
 
 
-class Form extends React.Component {
+class UpdateForm extends React.Component {
     constructor(props){
         super(props);
     
         this.state = {
             friend: {
                 name: '',
-                email: ''
-                
+                email: '',
+                id:this.props.portraitData.id
             }
 
         }
     };
   
+    
     changeHandler = ev => {
       ev.persist();
       let value = ev.target.value;
@@ -89,14 +46,17 @@ class Form extends React.Component {
       this.setState(prevState => ({
         friend: {
           ...prevState.friend,
-          [ev.target.name]: value
+          [ev.target.name]: value,
+          id:this.props.portraitData.id,
+          
         }
       }));
     };
-  
+    
     handleSubmit = e => {
       e.preventDefault();
-      this.props.addFriend(this.state.friend);
+      
+      this.props.updateFriend(this.state.friend);
   
       this.setState({
         friend: {
@@ -113,13 +73,13 @@ class Form extends React.Component {
         console.log('form rendering')
       return (
         <SForm>
-          <h2>Add New Friend</h2>
+          <h2>{`Update ${this.props.portraitData.name}`}</h2>
           <form onSubmit={this.handleSubmit}>
             <input
               type="string"
               name="name"
               onChange={this.changeHandler}
-              placeholder="Name"
+              placeholder="name"
               value={this.state.friend.name}
             />
             <div className="baseline" />
@@ -134,14 +94,12 @@ class Form extends React.Component {
             <div className="baseline" />
   
           
-            <BtnBox>
-                <button className="add">Add</button>
-                <button className="delete">Delete</button>
-            </BtnBox>
+  
+            <button className="md-button form-button">Add Friend</button>
           </form>
         </SForm>
       );
     }
   }
   
-  export default Form;
+  export default UpdateForm;

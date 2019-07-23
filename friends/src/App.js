@@ -5,6 +5,10 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import FriendList from './Components/FriendList';
 import styled, { css } from 'styled-components';
 import Portrait from './Components/Portrait';
+import BigVanity from './Components/BigVanity';
+import Form from './Components/Form';
+
+import axios from 'axios';
 
 const SApp = styled.div`
   height:auto;
@@ -88,11 +92,7 @@ const BGdiv = styled.div`
   background:red;
   
 `
-const BigVanity = styled.div`
-  width:100%;
-  height:100%;
 
-`
 
 const Sidebar = styled.section`
   width:250px;s
@@ -124,9 +124,57 @@ class App extends Component {
 
   }
 
+  addFriend = newFriend => {
+    axios
+      .post('http://localhost:5000/friends', newFriend)
+      .then(res => {
+        this.setState({ friendData: res.data,
+                        portraitData: newFriend});
+        console.log(res);
+        // redirect
+        // this.props.history.push('/item-list');
+      })    
+      .catch(err => {
+        console.log(err);
+      });
+
+      
+
+  };
+
+
+  updateFriend = newFriend => {
+    console.log('newFriend',newFriend)
+    axios
+      .put(`http://localhost:5000/friends/${newFriend.id}`,newFriend)
+      .then(res => {
+        this.setState({ friendData: res.data ,
+                        portraitData: newFriend});
+        console.log('RES',res);
+        // redirect
+        // this.props.history.push('/item-list');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  componentWillUpdate(newProps){
+    console.log('new app',newProps)
+    // if(this.state.friendData !== newProps){
+    //    this.setState({
+    //        friendData:newState.friendData
+
+    //    })
+    // }
+
+  }
+
   
   render() {
+    console.log('app rendering')
     return (
+      
       <SApp>
         <Sidebar>
         <div className='playdiv'></div>
@@ -137,14 +185,15 @@ class App extends Component {
               <div className="nav-links">
                 <Link to="/"><i class="fas fa-home"></i></Link>
                 <Link to="/friend-list"><i class="fas fa-user-friends"></i></Link>
+                
               </div>
           </SNav>
-          <Route path='/friend-list' render={(props) => <FriendList {...props} setPortrait={this.setPortrait} />}></Route>
+          <Route path='/friend-list' render={(props) => <FriendList {...props} friendData={this.state.friendData} setPortrait={this.setPortrait} />}></Route>
         </Sidebar>
-        <BigVanity>
-          <VanityNav></VanityNav>
-          <Portrait portraitData={this.state.portraitData}/>
-        </BigVanity>
+        <Route path='/friend-list' render={(props) => <BigVanity {...props}  updateFriend={this.updateFriend} addFriend={this.addFriend} portraitData={this.state.portraitData}/>}></Route>
+        
+          
+  
       </SApp>
     );
   }
